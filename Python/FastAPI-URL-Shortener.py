@@ -32,3 +32,14 @@ def encode(input_url: ShortenURL):
     url.append(output)
     return {"short_url": short_url}
 
+@app.get("/decode")
+# gekürzte URL als Übergabeparameter
+def decode(short_url: str):
+    # Überprüfe: kann gekürzte URL auf Ursprungsurl zurückgeführt werden
+    for x in url:
+        if x["short_url"] == short_url:
+            return {
+                "short_url": short_url,
+                "url": x["url"]
+            }
+    raise HTTPException(status_code=404, detail="URL nicht vorhanden")
