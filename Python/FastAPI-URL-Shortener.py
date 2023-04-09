@@ -43,3 +43,8 @@ def decode(short_url: str):
                 "url": x["url"]
             }
     raise HTTPException(status_code=404, detail="URL nicht vorhanden")
+
+
+@app.get("/print-data")
+def printdata():
+    return url
