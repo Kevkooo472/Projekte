@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char *caeser_decode(char key, const char *text)
+char *caesar_decode(char key, const char *text)
 {
         unsigned int i;
         char *res = malloc(sizeof(char) * (strlen(text) + 1));
@@ -46,6 +46,6 @@ int main(void)
     char decoded[] = "DASISTEINTEST";
     char encoded[] = "URJZJKVZEKVJK";
     printf("%s wird zu %s encodiert\n", decoded, caesar_encode('R', decoded));
-    printf("%s wird zu %s decodiert\n", encoded, caeser_decode('R', encoded));
+    printf("%s wird zu %s decodiert\n", encoded, caesar_decode('R', encoded));
     return 0;
 }
