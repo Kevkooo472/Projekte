@@ -7,7 +7,11 @@ int copy_file(FILE *quelle, char *filename);
 
 int main(void)
 {
-
+    FILE *original;
+    int res;
+    res = copy_file(original, "quelle.txt");
+    printf("Rueckgabewert von copy_file: '%i'.\n", res);
+    return 0;
 }
 
 int copy_file(FILE *quelle, char *filename)
