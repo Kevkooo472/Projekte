@@ -62,3 +62,27 @@ double decode_fk(int binary[], int n, int k)
         return a;
 }
 
+int read_and_decode_fk()
+{
+        /*k = Nachkommstellen*/
+        int k, status, binary[DIM];
+        char c;
+        printf("Die FK-Codierung hat %i Bit.\n", DIM);
+        printf("Mit wie viel Nachkommstellen soll die Codierung erfolgen?\n");
+        status = scanf("%i", &k);
+        if (status != 1 || (c = getchar() != '\n')) {
+                if (c == EOF || !flush_buffer()) {
+                        return BUFFER_ERROR;
+                }
+                return INVALID_INPUT;
+        }
+        printf("Binaercode eingeben:  ");
+        status = read_binary(binary);
+        if (status) {
+                /*gibt Fehlerwert bei Fehler zurück*/
+                return status;
+        }
+        printf("Decodierung: %f\n", decode_fk(binary, DIM, k));
+        return VALID_INPUT;
+}
+
