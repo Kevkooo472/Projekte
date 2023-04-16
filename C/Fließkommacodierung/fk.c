@@ -8,3 +8,12 @@
 #define BUFFER_ERROR -2
 
 #define VAL_LENGTH(i, DIM) (i < DIM)
+
+
+int flush_buffer(void) 
+{
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF)
+                {}
+        return c != EOF;
+}
