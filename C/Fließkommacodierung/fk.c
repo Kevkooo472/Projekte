@@ -51,3 +51,14 @@ int read_binary(int binary[])
         return VALID_INPUT;
 }
 
+double decode_fk(int binary[], int n, int k)
+{
+        /* n -> Länge, k -> Nachkommstellen*/
+        int i;
+        double a = 0;
+        for (i = 0; i < n; i++) {
+                a += (binary[i] * pow(2, n - k - 1 - i));
+        }
+        return a;
+}
+
