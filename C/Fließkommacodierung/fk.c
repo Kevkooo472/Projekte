@@ -86,3 +86,12 @@ int read_and_decode_fk()
         return VALID_INPUT;
 }
 
+int main(void) 
+{
+        int status;
+        status = read_and_decode_fk();
+        if (status) {
+                printf("Fehlercode: %i", status);
+        }
+        return 0;
+}
