@@ -17,3 +17,37 @@ int flush_buffer(void)
                 {}
         return c != EOF;
 }
+
+int read_binary(int binary[])
+{
+        int i = 0;
+        char c = getchar();
+        while (VAL_LENGTH(i, DIM)) {
+                /*ASCII v. 0 -> 48 u. 1 -> 49*/
+                switch (c) {
+                        case '0':
+                        case '1':
+                                binary[i] = c - 48;
+                                i++;
+                                break;        
+                        case EOF:
+                                return BUFFER_ERROR;
+                        case '\n':
+                                break;
+                        default:
+                                return INVALID_INPUT;
+                }
+                c = getchar();
+        }
+        if (c != '\n') {
+                if (c == EOF || !flush_buffer()) {
+                        return BUFFER_ERROR;
+                }
+                return INVALID_INPUT;
+        }
+        if (VAL_LENGTH(i, DIM)) {
+                return INVALID_INPUT;
+        }
+        return VALID_INPUT;
+}
+
